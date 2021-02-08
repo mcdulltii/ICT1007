@@ -5,28 +5,51 @@
 // Read number of processes,
 // Then read burst time for number of processes entered,
 // Parses burst time as isdigit
-int readbursttime(void) {
+// Returns [bursttime, waittime] as int**
+int** readprocesses(void) {
     // Initialisation
-    char *temp;
+    int *processtime[2];
     int *bursttime;
-    temp = (char*)malloc(sizeof(char));
-    bursttime = (int*)malloc(sizeof(char));
+    int *waittime;
+    bursttime = (int*)malloc(sizeof(int));
+    waittime = (int*)malloc(sizeof(int));
 
     // Reads number of processes as int
     int n = readint("Enter the no. of processes: ");
 
     // Reads burst time for number of processes entered
     for (int i=0; i<n; i++) {
-        printf("Enter Burst Time for process %d: ", i+1);
-        fgets(temp, sizeof(temp), stdin);
-        // Checks whether burst time entered isdigit
-        if (validint(temp)) {
-            sscanf(temp, "%d", &bursttime[i]);
-        } else {
-            puts("Incorrect input type entered!");
-            free(temp);
-            exit(1);
-        }
+        bursttime[i] = readtime("Burst", i);
+    }
+    
+    // Reads wait time for number of processes entered
+    for (int i=0; i<n; i++) {
+        waittime[i] = readtime("Wait", i);
+    }
+    
+    // Returns bursttime and waittime as array
+    processtime[0] = bursttime;
+    processtime[1] = waittime;
+    return time;
+}
+
+// Reads _ time per process
+int readtime(char *type, int i) {
+    // Initialisation
+    int output;
+    char *temp;
+    temp = (char*)malloc(sizeof(char));
+    
+    printf("Enter %s Time for process %d: ", type, i+1);
+    fgets(temp, sizeof(temp), stdin);
+    // Checks whether burst time entered isdigit
+    if (validint(temp)) {
+        sscanf(temp, "%d", output);
+        return output;
+    } else {
+        puts("Incorrect input type entered!");
+        free(temp);
+        exit(1);
     }
 }
 
