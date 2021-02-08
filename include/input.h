@@ -12,7 +12,7 @@ int readtime(char *type, int i);
 // Read number of processes,
 // Then read burst time for number of processes entered,
 // Parses burst time as isdigit
-// Returns [bursttime, waittime] as int**
+// Returns [bursttime, waittime, &n] as int**
 int** readprocesses(void) {
     // Initialisation
     int **processtime;
@@ -38,6 +38,7 @@ int** readprocesses(void) {
     // Returns bursttime and waittime as array
     processtime[0] = bursttime;
     processtime[1] = waittime;
+    processtime[2] = &n;
     return processtime;
 }
 
