@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <malloc.h>
+#include <ctype.h>
+
+// References
+int validint(char *output);
+int readint(char *prompt);
+int readtime(char *type, int i);
 
 // Read number of processes,
 // Then read burst time for number of processes entered,
@@ -8,9 +15,10 @@
 // Returns [bursttime, waittime] as int**
 int** readprocesses(void) {
     // Initialisation
-    int *processtime[2];
+    int **processtime;
     int *bursttime;
     int *waittime;
+    processtime = (int**)malloc(sizeof(int*));
     bursttime = (int*)malloc(sizeof(int));
     waittime = (int*)malloc(sizeof(int));
 
@@ -21,16 +29,16 @@ int** readprocesses(void) {
     for (int i=0; i<n; i++) {
         bursttime[i] = readtime("Burst", i);
     }
-    
+
     // Reads wait time for number of processes entered
     for (int i=0; i<n; i++) {
         waittime[i] = readtime("Wait", i);
     }
-    
+
     // Returns bursttime and waittime as array
     processtime[0] = bursttime;
     processtime[1] = waittime;
-    return time;
+    return processtime;
 }
 
 // Reads _ time per process
@@ -39,12 +47,12 @@ int readtime(char *type, int i) {
     int output;
     char *temp;
     temp = (char*)malloc(sizeof(char));
-    
+
     printf("Enter %s Time for process %d: ", type, i+1);
     fgets(temp, sizeof(temp), stdin);
     // Checks whether burst time entered isdigit
     if (validint(temp)) {
-        sscanf(temp, "%d", output);
+        sscanf(temp, "%d", &output);
         return output;
     } else {
         puts("Incorrect input type entered!");
