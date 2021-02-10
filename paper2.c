@@ -25,7 +25,7 @@ int main() {
 
   // Initialisation
   int n = *processtime[2];
-  int t = 0, start = 1, next, K = 2; // Step 1a
+  int t = 0, start = 1, next, step = 0, K = 2; // Step 1a
   struct pair bufferList[n]; // Ready Queue
   int *wait, *turn; // Waiting and Turnaround time
   int remove[n];
@@ -50,8 +50,8 @@ int main() {
   for (int i=0; i<n; i++) {
     struct pair bufferStruct; // Step 1b
     bufferStruct.index = i;
-    // bufferStruct.burst = processtime[0][i];
     bufferStruct.burst = processtime[0][i];
+    // bufferStruct.burst = bursttime[i];
     bufferStruct.wait = processtime[1][i];
     bufferList[i] = bufferStruct;
   }
@@ -113,7 +113,8 @@ int main() {
       break;
 
     // Increasing K alternatively
-    K += (start%2) ? 0 : 1; // Step 5b
+    K += (step%2) ? 0 : 1; // Step 5b
+    step++;
   }
 
   calc(wait, turn, n);
