@@ -54,7 +54,7 @@ int main(void) {
     if (p_counter == n){
       break;
     }
-    if (rem_bt[i] < qt){ //run if burst time less than qt
+    if (rem_bt[i] <= qt){ //run if burst time less than or equal to qt
       time += rem_bt[i];
       ct[i] = time;
       rem_bt[i] = -1;
