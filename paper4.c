@@ -11,6 +11,8 @@ int main(void) {
   int wt[MAX]; //waiting time of each process
   int tat[MAX]; // turnaround time of each process
   int ct[MAX]; // completion time of each process
+  int ps[MAX];// keeps tracks of process sequence
+  int ps_index; //keeps track of index of ps array
   int bt_max; //max burst time 
   int qt; //quantum time
   int p_counter; //keeps track of number of processes done
@@ -54,11 +56,13 @@ int main(void) {
     if (p_counter == n){
       break;
     }
-    if (rem_bt[i] <= qt){ //run if burst time less than or equal to qt
+    if (rem_bt[i] <= qt){ //run if burst time less than qt
       time += rem_bt[i];
       ct[i] = time;
+      ps[ps_index] = i + 1;
       rem_bt[i] = -1;
       p_counter += 1;
+      ps_index += 1;
     }
 
   }
@@ -70,8 +74,10 @@ int main(void) {
     } else if (rem_bt[i] != -1){
       time += rem_bt[i];
       ct[i] = time;
+      ps[ps_index] = i + 1;
       rem_bt[i] = -1;
       p_counter += 1;
+      ps_index += 1;
     }
 
   }
@@ -93,7 +99,20 @@ int main(void) {
     printf("%5d%10d%20d%20d\n", i+1, bt[i], wt[i], ct[i]);
   }
 
-  printf("\nAverage Waiting Time: %.1f\n", total_wt/ (float)n);
+  printf("\nProcess Sequence: ");
+  for (int i = 0; i < n; i++){
+    printf("Process %d", ps[i]);
+    if (i == n -1){
+      printf("\n");
+      
+    }else{
+      printf(" --> ");
+    }
+  }
+
+  printf("\nDynamic Time Quantum: %.1f\n", PROPORTION * bt_max);
+  printf("Maximum Burst Time: %d\n", bt_max);
+  printf("Average Waiting Time: %.1f\n", total_wt/ (float)n);
   printf("Average Turnaround Time: %.1f\n", total_tat/ (float)n);
 
 
