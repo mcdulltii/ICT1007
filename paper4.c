@@ -162,7 +162,7 @@ int main(void) {
         index = -1;
         continue;
       }
-      //find a new process that can run in ready_queue and redirect index to point to the burst time in rem_bt
+      //find a new process that can run in ready_queue and redirect index
       for (int i = 0; i < n; i++){
         if (ready_queue[i] != -1 && ready_queue[i] <= qt){
           index = i;
