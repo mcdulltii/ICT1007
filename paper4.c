@@ -1,4 +1,5 @@
 #include <stdio.h>
+//assumes all arrival time is the same and equal 0
 
 int MAX = 20; // max number of processes
 float PROPORTION = 0.8; //multiplier of burst time for dynamic time quantum
