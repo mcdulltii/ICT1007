@@ -163,7 +163,7 @@
       printf("|  Process ID  |   Arrival Time |  Burst Time  |\n");
       //Print some simple GUI to reference
       for(int j=0; j<total_processes; j++){
-          printf("\t%d\t\t%d\t\t%d\t\n",process_id[j], arrival_time[j], burst_time[j]);
+          printf("\t%d\t\t\t\t\t%d\t\t\t\t\t%d\t\n",process_id[j], arrival_time[j], burst_time[j]);
       }
       printf("Processing information...\n");
       sleep(1);
@@ -174,7 +174,7 @@
       selectionSort(arrival_time, process_id, burst_time, total_processes); 
       printf("|  Process ID  |   Arrival Time |  Burst Time  |\n");    
       for(int j=0; j<total_processes; j++){
-          printf("\t%d\t\t%d\t\t%d\t\n",process_id[j], arrival_time[j], burst_time[j]);
+          printf("\t%d\t\t\t\t\t%d\t\t\t\t\t%d\t\n",process_id[j], arrival_time[j], burst_time[j]);
       }
       //Main Loop
       //For the first loop
@@ -317,6 +317,7 @@
      /////////////////////////////////////////////////////////////////////////////////////////////////////////
       //Per CYCLE of the algorithm after 1st Cycle
       while(process_left > 1){
+        printf("%d", process_left);
         lqueue_counter = 0;
         hqueue_counter = 0;
         new_lq_counter = 0;
@@ -476,11 +477,10 @@
       hqueue_counter = 0;
       new_lq_counter = 0;
       new_hq_counter = 0;
-      
     }
       printf("|  Process ID  |   Waiting Time |  Turn_Around Time  |\n");
       for(int tt = 0; tt < total_processes; tt++){
-        printf("\t%d\t\t%0.2f\t\t%0.2f\t\n",process_id[tt], waiting_time[tt], turnabout_turn[tt]);
+        printf("\t%d\t\t\t\t\t%0.2f\t\t\t\t\t%0.2f\t\n",process_id[tt], waiting_time[tt], turnabout_turn[tt]);
         total_waiting_time += waiting_time[tt];
         total_turnaround_time += turnabout_turn[tt];
       }
