@@ -1,5 +1,4 @@
 #include <stdio.h>
-//assumes all arrival time is the same and equal 0
 
 int MAX = 20; // max number of processes
 float PROPORTION = 0.8; //multiplier of burst time for dynamic time quantum
@@ -162,7 +161,7 @@ int main(void) {
         index = -1;
         continue;
       }
-      //find a new process that can run in ready_queue and redirect index
+      //find a new process that can run in ready_queue and redirect index to point to the burst time in rem_bt
       for (int i = 0; i < n; i++){
         if (ready_queue[i] != -1 && ready_queue[i] <= qt){
           index = i;
@@ -258,8 +257,13 @@ int main(void) {
           }
         }
       }
+
+
     }
+
+
   }
+
 
 
   //calculate turnaround time of each process
