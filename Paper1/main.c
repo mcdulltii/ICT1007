@@ -6,7 +6,7 @@ int main()
 	initializeQueue(&q);//It initializes queue
 	int TQ = getInputFromUser(&q);
 	displayProcesses(&q);
-	simulateESRR(&q, 4);
+	simulateESRR(&q, TQ);
 	deallocateResourcesOfQueue(&q);
 	return 0;
 }

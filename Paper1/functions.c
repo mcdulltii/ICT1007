@@ -15,6 +15,7 @@ void simulateESRR(Queue* processes, int TQ)
   //Clock that keeps track of the current time
 	int clock = 0;
   
+  printf("\nTIME QUANTUM: %d\n", TQ);
 	printf("\n\nARRANGEMENT OF PROCESSES IN READY QUEUE");
 	while (processes->front != NULL || readyQueue.front != NULL)
 	{
