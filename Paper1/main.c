@@ -20,7 +20,7 @@ int getInputFromUser(Queue* processes)
 		scanf("%d", &n);
 		if (n <= 0)
 		{
-			printf("\n Invalid Number");
+			printf("\n INVALID NUMBER");
 		}
 	} while (n <= 0);
 
@@ -40,11 +40,11 @@ int getInputFromUser(Queue* processes)
 	int TQ;
 	do
 	{
-		printf("\nEnter Time Quantum : ");
+		printf("\nENTER THE TIME QUANTUM: ");
 		scanf("%d", &TQ);
 		if (TQ <= 0)
 		{
-			printf("\n Invalid Time Quantum");
+			printf("\n INVALID TIME QUANTUM");
 		}
 	} 
   while (TQ <= 0);

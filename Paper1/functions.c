@@ -15,7 +15,7 @@ void simulateESRR(Queue* processes, int TQ)
   //Clock that keeps track of the current time
 	int clock = 0;
   
-	printf("\n\nArrangement of Processes in Ready Queue");
+	printf("\n\nARRANGEMENT OF PROCESSES IN READY QUEUE");
 	while (processes->front != NULL || readyQueue.front != NULL)
 	{
 		bool found = populateReadyQueue(processes, &readyQueue, clock); //Populate readyQueue with processes whose arrival time is smaller than clock
@@ -81,7 +81,7 @@ void displayTurnAroundTimeAndWaitingTime(Queue* terminatedProcesses)
 	int turnAroundSum = 0;
 	int waitingTimeSum = 0;
 	int n = 0;
-	printf("\n\nProcess		Turn Around Time		Waiting Time");
+	printf("\n\nPROCESS		TURN AROUND TIME		WAITING TIME");
 	while (temp != NULL)
 	{
 		printf("\n  P%d\t\t\t%d\t\t\t\t\t\t%d", temp->processNumber, temp->turnAroundTime, temp->turnAroundTime - temp->actualExecutionTime);
@@ -90,8 +90,8 @@ void displayTurnAroundTimeAndWaitingTime(Queue* terminatedProcesses)
 		n = n + 1;
 		temp = temp->next;
 	}
-	printf("\n\nAverage Turn Around Time  : %f", (float)turnAroundSum / n);
-	printf("\nAverage Waiting Time : %f\n\n", (float)waitingTimeSum / n);
+	printf("\n\nAVERAGE TURNAROUND TIME: %f", (float)turnAroundSum / n);
+	printf("\nAVERAGE WAITING TIME: %f\n\n", (float)waitingTimeSum / n);
 }
 
 
@@ -221,7 +221,7 @@ void display(Queue* ref)
 	struct  Process* temp = ref->front;
 	while (temp != NULL)
 	{
-		printf("%d: ", temp->processNumber);
+		printf("P%d; ", temp->processNumber);
 		temp = temp->next;
 	}
 }
@@ -258,7 +258,7 @@ void displayProcesses(Queue* p)
 {
 	if (p == NULL || p->front == NULL)
 		return;
-	printf("\n\nArrival Time		Process			Execution Time");
+	printf("\n\nARRIVAL TIME		PROCESS			EXECUTION TIME");
 	Process* temp = p->front;
 	while (temp != NULL)
 	{
