@@ -126,7 +126,7 @@ int main(void) {
       continue;
     }
     if (ready_queue[index] <= qt){
-      //run CPU
+      //assign CPU
       time += ready_queue[index];
       ready_queue[index] = -1;
       rem_bt[index] = -1;
