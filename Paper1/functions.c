@@ -91,7 +91,7 @@ void displayTurnAroundTimeAndWaitingTime(Queue* terminatedProcesses)
 		temp = temp->next;
 	}
 	printf("\n\nAverage Turn Around Time  : %f", (float)turnAroundSum / n);
-	printf("\nAverage Waiting Around Time : %f\n\n", (float)waitingTimeSum / n);
+	printf("\nAverage Waiting Time : %f\n\n", (float)waitingTimeSum / n);
 }
 
 
